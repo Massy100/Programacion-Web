@@ -1,8 +1,19 @@
-*{
-    padding: 0;
-    margin: 0;
-    border: 0;
+:root {
+    --blue-dark: #1877f2;
+    --blue-light: #e7f3ff;
+    --white: #fff;
+    --gray-light: #f0f2f5;
+    --gray-text: #1c1e21;
+    --font-main: Helvetica, Arial, sans-serif;
 }
-body, html{
-    height: 100%;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+
+body {
+    background-color: var(--gray-light);
 }

@@ -65,3 +65,11 @@ button {
     border-radius: 4px;
     font-weight: bold;
 }
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #737373;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+}

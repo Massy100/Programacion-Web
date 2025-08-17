@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import PokemonCard from './components/PokemonCard';
 import './App.css';
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -21,20 +22,34 @@ function App() {
 
         setPokemonList(pokemonData);
       } catch (error) {
-        console.error('Error fetching Pokémon:', error);
+        console.error('Error unable to fetch Pokemon data:', error);
       }
     };
 
     fetchPokemon();
   }, []);
 
+  const scroll = (direction) => {
+    if (containerRef.current) {
+      const { current: container } = containerRef;
+      const scrollAmount = direction === 'left' ? -250 : 250;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="app">
-      <h1>Pokédex</h1>
-      <div className="pokemon-container">
+      <h1>Pokedex</h1>
+      
+      <div className="pokemon-container" ref={containerRef}>
         {pokemonList.map((pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
+      </div>
+
+      <div className="navigation">
+        <button onClick={() => scroll('left')}>Previous</button>
+        <button onClick={() => scroll('right')}>Next</button>
       </div>
     </div>
   );

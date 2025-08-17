@@ -8,10 +8,10 @@ const PokemonCard = ({ pokemon }) => {
         alt={pokemon.name}
       />
       <h2>{pokemon.name.toUpperCase()}</h2>
-      <p><strong>Tipo:</strong> {pokemon.types.map((type) => type.type.name).join(', ')}</p>
-      <p><strong>Altura:</strong> {pokemon.height / 10} m</p>
-      <p><strong>Peso:</strong> {pokemon.weight / 10} kg</p>
-      <p><strong>Habilidades:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}</p>
+      <p><strong>Type:</strong> {pokemon.types.map((type) => type.type.name).join(', ')}</p>
+      <p><strong>Height:</strong> {pokemon.height / 10} m</p>
+      <p><strong>Weight:</strong> {pokemon.weight / 10} kg</p>
+      <p><strong>Skills:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}</p>
     </div>
   );
 };

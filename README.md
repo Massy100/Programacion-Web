@@ -6,4 +6,4 @@ Captura 3:
 ![alt text](captura3.png)
 Captura 4:
 ![alt text](captura4.png)
-Link a CDN CloudFront:
+Link a CDN CloudFront: d2jj37kbn8wo3m.cloudfront.net

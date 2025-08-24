@@ -40,7 +40,7 @@ jobs:
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
         run: |
-          # Comando modificado (sin --acl)
+          # Comando modificado (sin --acl )
           aws s3 sync dist/ s3://$S3_BUCKET \
             --delete \
             --cache-control "max-age=31536000,public" \

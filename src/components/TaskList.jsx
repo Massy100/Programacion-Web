@@ -9,7 +9,7 @@ function TaskList({ tasks, filter, onToggleTask, onDeleteTask }) {
   });
 
   if (filteredTasks.length === 0) {
-    return <p className="no-tasks">No hay tareas para mostrar</p>;
+    return <p className="no-tasks">No tasks found</p>;
   }
 
   return (

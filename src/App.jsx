@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import useLocalStorage from './hooks/useLocalStorage';
+import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
+import FilterButtons from './components/FilterButtons';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useLocalStorage('tasks', []);
+  const [filter, setFilter] = useState('all');
+
+  const addTask = (task) => {
+    setTasks([...tasks, task]);
+  };
+
+  const toggleTask = (taskId) => {
+    setTasks(tasks.map(task =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    ));
+  };
+
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id !== taskId));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+    <div className="app">
+      <h1>Tasks Manager</h1>
+      <TaskForm onAddTask={addTask} />
+      <FilterButtons currentFilter={filter} onFilterChange={setFilter} />
+      <TaskList
+        tasks={tasks}
+        filter={filter}
+        onToggleTask={toggleTask}
+        onDeleteTask={deleteTask}
+      />
+      {tasks.length > 0 && (
+        <p className="task-counter">
+          {tasks.filter(t => !t.completed).length} to-do list out of {tasks.length} total tasks
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

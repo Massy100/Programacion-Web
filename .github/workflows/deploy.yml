@@ -1,0 +1,61 @@
+name: Deploy to S3 and CloudFront
+
+on:
+  push:
+    branches:
+      - hw-04
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project (Vite)
+        run: |
+          npm run build
+          echo "Build contents:"
+          ls -R dist/
+
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload to S3 Bucket
+        env:
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        run: |
+          # Comando modificado (sin --acl)
+          aws s3 sync dist/ s3://$S3_BUCKET \
+            --delete \
+            --cache-control "max-age=31536000,public" \
+            --no-progress
+
+          # Verificación de archivos subidos
+          echo "Upload verification:"
+          aws s3 ls s3://$S3_BUCKET --recursive --human-readable --summarize
+
+      - name: Invalidate CloudFront Cache
+        env:
+          CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        run: |
+          echo "Invalidating CloudFront distribution: $CLOUDFRONT_DISTRIBUTION_ID"
+          aws cloudfront create-invalidation \
+            --distribution-id $CLOUDFRONT_DISTRIBUTION_ID \
+            --paths "/*" \
+            --output json

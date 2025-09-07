@@ -38,3 +38,21 @@ class Cat(models.Model):
     
     def __str__(self):
         return f"Cat: {self.name}"
+    
+class Rabbit(models.Model):
+    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=50, default="Conejo")
+    breed = models.CharField(max_length=100)
+    age = models.IntegerField()
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='rabbits')
+    
+    EAR_CHOICES = [
+        ('long', 'Long'),
+        ('short', 'Short'),
+    ]
+    ear_type = models.CharField(max_length=20, choices=EAR_CHOICES)
+    vaccinated = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return f"Rabbit: {self.name}"
+

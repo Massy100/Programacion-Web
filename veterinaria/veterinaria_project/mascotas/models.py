@@ -25,3 +25,16 @@ class Dog(models.Model):
     
     def __str__(self):
         return f"Dog: {self.name}"
+    
+class Cat(models.Model):
+    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=50, default="Felino")
+    breed = models.CharField(max_length=100)
+    age = models.IntegerField()
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='cats')
+    
+    fur_type = models.CharField(max_length=50)
+    indoor = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return f"Cat: {self.name}"

@@ -8,16 +8,20 @@ class Owner(models.Model):
     def __str__(self):
         return self.name
 
-# Modelo abstracto Pet
-class Pet(models.Model):
+class Dog(models.Model):
     name = models.CharField(max_length=100)
-    species = models.CharField(max_length=50)
+    species = models.CharField(max_length=50, default="Canino")
     breed = models.CharField(max_length=100)
     age = models.IntegerField()
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='pets')
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='dogs')
     
-    class Meta:
-        abstract = True
+    SIZE_CHOICES = [
+        ('small', 'Small'),
+        ('medium', 'Medium'),
+        ('large', 'Large'),
+    ]
+    size = models.CharField(max_length=20, choices=SIZE_CHOICES)
+    trained = models.BooleanField(default=False)
     
     def __str__(self):
-        return f"{self.name} ({self.species})"
+        return f"Dog: {self.name}"

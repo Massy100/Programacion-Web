@@ -1,1 +1,0 @@
-![alt text](src/img/diagrama_veterinaria.png)

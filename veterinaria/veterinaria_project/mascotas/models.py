@@ -8,51 +8,49 @@ class Owner(models.Model):
     def __str__(self):
         return self.name
 
-class Dog(models.Model):
-    name = models.CharField(max_length=100)
-    species = models.CharField(max_length=50, default="Canino")
-    breed = models.CharField(max_length=100)
-    age = models.IntegerField()
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='dogs')
+class AnimalType(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    description = models.TextField(blank=True, null=True)
     
+    def __str__(self):
+        return self.name
+
+class AnimalBreed(models.Model):
+    name = models.CharField(max_length=100)
+    animal_type = models.ForeignKey(AnimalType, on_delete=models.CASCADE, related_name='breeds')
+    description = models.TextField(blank=True, null=True)
+    
+    def __str__(self):
+        return f"{self.name} ({self.animal_type.name})"
+
+class Animal(models.Model):
     SIZE_CHOICES = [
         ('small', 'Small'),
         ('medium', 'Medium'),
         ('large', 'Large'),
     ]
-    size = models.CharField(max_length=20, choices=SIZE_CHOICES)
-    trained = models.BooleanField(default=False)
-    
-    def __str__(self):
-        return f"Dog: {self.name}"
-    
-class Cat(models.Model):
-    name = models.CharField(max_length=100)
-    species = models.CharField(max_length=50, default="Felino")
-    breed = models.CharField(max_length=100)
-    age = models.IntegerField()
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='cats')
-    
-    fur_type = models.CharField(max_length=50)
-    indoor = models.BooleanField(default=True)
-    
-    def __str__(self):
-        return f"Cat: {self.name}"
-    
-class Rabbit(models.Model):
-    name = models.CharField(max_length=100)
-    species = models.CharField(max_length=50, default="Conejo")
-    breed = models.CharField(max_length=100)
-    age = models.IntegerField()
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='rabbits')
     
     EAR_CHOICES = [
         ('long', 'Long'),
         ('short', 'Short'),
     ]
-    ear_type = models.CharField(max_length=20, choices=EAR_CHOICES)
+    
+    name = models.CharField(max_length=100)
+    animal_type = models.ForeignKey(AnimalType, on_delete=models.CASCADE, related_name='animals')
+    breed = models.ForeignKey(AnimalBreed, on_delete=models.CASCADE, related_name='animals')
+    age = models.IntegerField()
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='animals')
+    
+    size = models.CharField(max_length=20, choices=SIZE_CHOICES, blank=True, null=True)
+    trained = models.BooleanField(default=False)
+    
+    fur_type = models.CharField(max_length=50, blank=True, null=True)
+    indoor = models.BooleanField(default=True)
+    ear_type = models.CharField(max_length=20, choices=EAR_CHOICES, blank=True, null=True)
     vaccinated = models.BooleanField(default=False)
     
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
     def __str__(self):
-        return f"Rabbit: {self.name}"
-
+        return f"{self.animal_type.name}: {self.name} (Owner: {self.owner.name})"

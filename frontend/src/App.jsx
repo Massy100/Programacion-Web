@@ -90,7 +90,7 @@ function App() {
     <div className="app">
       <div className="container">
         <div className="header">
-          <h1>🔒 Secure Message Sharing</h1>
+          <h1> Secure Message Sharing</h1>
           <p>Share secrets that self-destruct after being viewed once</p>
         </div>
 
@@ -99,13 +99,13 @@ function App() {
             className={`tab ${activeTab === 'hide' ? 'active' : ''}`}
             onClick={() => handleTabChange('hide')}
           >
-            🎁 Hide Secret
+             Hide Secret
           </button>
           <button
             className={`tab ${activeTab === 'reveal' ? 'active' : ''}`}
             onClick={() => handleTabChange('reveal')}
           >
-            🔓 Reveal Secret
+             Reveal Secret
           </button>
         </div>
 
@@ -130,13 +130,13 @@ function App() {
                   className="btn-primary"
                   disabled={loading || !secretText.trim()}
                 >
-                  {loading ? '🔄 Hiding Secret...' : '🔒 Hide Secret'}
+                  {loading ? 'Hiding Secret...' : 'Hide Secret'}
                 </button>
               </form>
 
               {generatedKey && (
                 <div className="result success">
-                  <h3>✅ Secret Hidden Successfully!</h3>
+                  <h3>Secret Hidden Successfully!</h3>
                   <p>Your secret key (copy this and share it):</p>
                   <div 
                     className="key-display"
@@ -146,7 +146,7 @@ function App() {
                     {generatedKey}
                   </div>
                   <p className="url-display">
-                    ⏰ This secret will expire in 24 hours or after first view
+                    This secret will expire in 24 hours or after first view
                   </p>
                 </div>
               )}
@@ -173,19 +173,19 @@ function App() {
                   className="btn-primary"
                   disabled={loading || !key.trim()}
                 >
-                  {loading ? '🔄 Revealing Secret...' : '🔓 Reveal Secret'}
+                  {loading ? 'Revealing Secret...' : 'Reveal Secret'}
                 </button>
               </form>
 
               {revealedText && (
                 <div className="result success">
-                  <h3>🎉 Secret Revealed!</h3>
+                  <h3>Secret Revealed!</h3>
                   <p>The secret message was:</p>
                   <div className="secret-display">
                     {revealedText}
                   </div>
                   <p className="warning-message">
-                    ⚠️ This secret has been destroyed and cannot be viewed again
+                    This secret has been destroyed and cannot be viewed again
                   </p>
                 </div>
               )}
@@ -194,14 +194,14 @@ function App() {
 
           {error && (
             <div className="result error">
-              <h3>❌ Error</h3>
+              <h3>Error</h3>
               <p>{error}</p>
             </div>
           )}
 
           {successMessage && !generatedKey && !revealedText && (
             <div className="result success">
-              <h3>✅ Success</h3>
+              <h3>Success</h3>
               <p>{successMessage}</p>
             </div>
           )}

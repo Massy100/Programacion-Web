@@ -10,7 +10,6 @@ import time
 
 logger = logging.getLogger(__name__)
 
-# Redis connection with retry logic
 def get_redis_connection():
     max_retries = 5
     retry_delay = 2
@@ -18,7 +17,6 @@ def get_redis_connection():
     for attempt in range(max_retries):
         try:
             redis_client = redis.from_url(settings.REDIS_URL, decode_responses=True)
-            # Test connection
             redis_client.ping()
             logger.info("Successfully connected to Redis")
             return redis_client
@@ -30,7 +28,6 @@ def get_redis_connection():
                 logger.error("All Redis connection attempts failed")
                 raise e
 
-# Initialize Redis connection
 try:
     redis_client = get_redis_connection()
 except redis.ConnectionError as e:
@@ -39,7 +36,6 @@ except redis.ConnectionError as e:
 
 @api_view(['GET'])
 def health_check(request):
-    """Health check endpoint"""
     redis_status = "connected" if redis_client and redis_client.ping() else "disconnected"
     return Response({
         "status": "healthy", 
@@ -49,9 +45,6 @@ def health_check(request):
 
 @api_view(['POST'])
 def hide_secret(request):
-    """
-    Store a secret in Redis and return a unique key
-    """
     if not redis_client:
         return Response(
             {"error": "Redis connection unavailable"}, 
@@ -67,10 +60,8 @@ def hide_secret(request):
                 status=status.HTTP_400_BAD_REQUEST
             )
         
-        # Generate unique key
         key = str(uuid.uuid4())
         
-        # Ensure key doesn't already exist (extremely rare but possible)
         max_retries = 5
         for attempt in range(max_retries):
             if not redis_client.exists(key):
@@ -82,7 +73,6 @@ def hide_secret(request):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
         
-        # Store in Redis with expiration (24 hours)
         redis_client.setex(key, 86400, secret_text)
         
         logger.info(f"Secret stored with key: {key}")
@@ -108,9 +98,6 @@ def hide_secret(request):
 
 @api_view(['GET'])
 def reveal_secret(request, key):
-    """
-    Retrieve and delete a secret from Redis
-    """
     if not redis_client:
         return Response(
             {"error": "Redis connection unavailable"}, 
@@ -124,7 +111,6 @@ def reveal_secret(request, key):
                 status=status.HTTP_404_NOT_FOUND
             )
         
-        # Get the secret
         secret_text = redis_client.get(key)
         
         if secret_text is None:
@@ -133,7 +119,6 @@ def reveal_secret(request, key):
                 status=status.HTTP_404_NOT_FOUND
             )
         
-        # Delete the key immediately after retrieval
         redis_client.delete(key)
         
         logger.info(f"Secret revealed and deleted for key: {key}")
@@ -158,9 +143,6 @@ def reveal_secret(request, key):
 
 @api_view(['GET'])
 def get_redis_info(request):
-    """
-    Debug endpoint to check Redis connection and stats
-    """
     if not redis_client:
         return Response({
             "redis_connected": False,

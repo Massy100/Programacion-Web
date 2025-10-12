@@ -67,7 +67,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Redis Configuration - USAR EL NOMBRE DEL SERVICIO DOCKER
+# Redis Configuration
 REDIS_URL = config('REDIS_URL', default='redis://redis:6379')
 
 # Django REST Framework

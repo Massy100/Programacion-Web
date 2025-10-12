@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #FFD1DC 0%, #FFF9C4 50%, #C8E6C9 100%);
   min-height: 100vh;
   padding: 20px;
   line-height: 1.6;
@@ -22,42 +22,47 @@ body {
 .container {
   width: 100%;
   max-width: 600px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(255, 182, 193, 0.2);
   overflow: hidden;
   margin: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .header {
-  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-  color: white;
+  background: linear-gradient(135deg, #F8BBD9 0%, #FFECB3 100%);
+  color: #5D4037;
   padding: 30px 20px;
   text-align: center;
+  border-bottom: 3px solid #FFCDD2;
 }
 
 .header h1 {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 8px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .header p {
-  opacity: 0.9;
+  opacity: 0.8;
   font-size: 16px;
+  font-weight: 500;
 }
 
 .tabs {
   display: flex;
-  background: #34495e;
-  border-bottom: 1px solid #2c3e50;
+  background: linear-gradient(135deg, #FFCDD2 0%, #F8BBD9 100%);
+  border-bottom: 2px solid #F48FB1;
 }
 
 .tab {
   flex: 1;
   padding: 18px;
   text-align: center;
-  color: white;
+  color: #5D4037;
   cursor: pointer;
   border: none;
   background: none;
@@ -68,16 +73,19 @@ body {
 }
 
 .tab.active {
-  background: #3498db;
-  border-bottom-color: #2980b9;
+  background: #FFF9C4;
+  border-bottom-color: #FFD54F;
+  color: #5D4037;
 }
 
 .tab:hover:not(.active) {
-  background: #3a506b;
+  background: #FFECB3;
+  color: #5D4037;
 }
 
 .content {
   padding: 40px;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .tab-content {
@@ -97,68 +105,73 @@ body {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #5D4037;
   font-size: 16px;
 }
 
 textarea {
   width: 100%;
   padding: 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
+  border: 2px solid #FFCDD2;
+  border-radius: 12px;
   font-size: 16px;
   resize: vertical;
   min-height: 120px;
   font-family: inherit;
   transition: all 0.3s ease;
-  background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.9);
+  color: #5D4037;
 }
 
 textarea:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: #81C784;
   background: white;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.2);
 }
 
 textarea:disabled {
-  background: #ecf0f1;
-  color: #7f8c8d;
+  background: #F5F5F5;
+  color: #9E9E9E;
   cursor: not-allowed;
 }
 
 .btn-primary {
   width: 100%;
   padding: 18px;
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  background: linear-gradient(135deg, #81C784 0%, #66BB6A 100%);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 4px 15px rgba(129, 199, 132, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+  box-shadow: 0 6px 20px rgba(129, 199, 132, 0.4);
+  background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
 }
 
 .btn-primary:disabled {
-  background: #bdc3c7;
+  background: linear-gradient(135deg, #E0E0E0 0%, #BDBDBD 100%);
   transform: none;
   box-shadow: none;
   cursor: not-allowed;
+  color: #9E9E9E;
 }
 
 .result {
   margin-top: 25px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   border-left: 5px solid;
   animation: slideIn 0.3s ease-out;
+  backdrop-filter: blur(5px);
 }
 
 @keyframes slideIn {
@@ -167,15 +180,15 @@ textarea:disabled {
 }
 
 .result.success {
-  background: #d4edda;
-  border-color: #28a745;
-  color: #155724;
+  background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+  border-color: #66BB6A;
+  color: #2E7D32;
 }
 
 .result.error {
-  background: #f8d7da;
-  border-color: #dc3545;
-  color: #721c24;
+  background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+  border-color: #EF5350;
+  color: #C62828;
 }
 
 .result h3 {
@@ -184,58 +197,69 @@ textarea:disabled {
 }
 
 .key-display {
-  background: #2c3e50;
-  color: white;
+  background: linear-gradient(135deg, #FFF9C4 0%, #FFECB3 100%);
+  color: #5D4037;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-family: 'Courier New', monospace;
   word-break: break-all;
   margin: 15px 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 2px solid #FFD54F;
+  box-shadow: 0 2px 8px rgba(255, 213, 79, 0.2);
 }
 
 .key-display:hover {
-  background: #34495e;
-  border-color: #3498db;
+  background: linear-gradient(135deg, #FFECB3 0%, #FFE082 100%);
+  border-color: #FFB74D;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 213, 79, 0.3);
 }
 
 .secret-display {
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+  color: #5D4037;
   padding: 20px;
-  border-radius: 8px;
-  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  border: 2px solid #CE93D8;
   margin: 15px 0;
   white-space: pre-wrap;
   word-wrap: break-word;
   font-size: 16px;
   line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(206, 147, 216, 0.2);
 }
 
 .url-display, .warning-message {
   margin-top: 10px;
   font-size: 14px;
   opacity: 0.8;
+  color: #5D4037;
 }
 
 .footer {
-  background: #ecf0f1;
+  background: linear-gradient(135deg, #FFECB3 0%, #FFF9C4 100%);
   padding: 20px;
   text-align: center;
-  color: #7f8c8d;
+  color: #5D4037;
   font-size: 14px;
-  border-top: 1px solid #bdc3c7;
+  border-top: 2px solid #FFD54F;
+}
+
+.container:hover {
+  box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
 }
 
 @media (max-width: 768px) {
   body {
     padding: 10px;
+    background: linear-gradient(135deg, #FFD1DC 0%, #FFF9C4 100%);
   }
   
   .container {
     margin: 10px;
-    border-radius: 12px;
+    border-radius: 16px;
   }
   
   .content {
@@ -253,5 +277,29 @@ textarea:disabled {
   .tab {
     padding: 15px;
     font-size: 14px;
+  }
+  
+  .btn-primary {
+    padding: 16px;
+    font-size: 16px;
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.container {
+  animation: gentlePulse 8s ease-in-out infinite;
+}
+
+@media (max-width: 480px) {
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .tab {
+    padding: 12px;
   }
 }

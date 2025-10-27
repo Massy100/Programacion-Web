@@ -1,0 +1,121 @@
+03:43:42.059 INFO  Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
+03:43:42.063 INFO  Project root configuration file: NONE
+03:43:42.078 INFO  SonarScanner CLI 7.3.0.5189
+03:43:42.081 INFO  Linux 5.15.146.1-microsoft-standard-WSL2 amd64
+03:43:42.859 INFO  Communicating with SonarQube Community Build 25.10.0.114319
+03:43:42.860 INFO  JRE provisioning: os[linux], arch[x86_64]
+03:43:44.183 INFO  Starting SonarScanner Engine...
+03:43:44.184 INFO  Java 17.0.13 Eclipse Adoptium (64-bit)
+03:43:45.124 INFO  Load global settings
+03:43:45.185 INFO  Load global settings (done) | time=62ms
+03:43:45.188 INFO  Server id: 54000601-AZojm-6GE7-CRQ4xVd6H
+03:43:45.209 INFO  Loading required plugins
+03:43:45.210 INFO  Load plugins index
+03:43:45.222 INFO  Load plugins index (done) | time=12ms
+03:43:45.223 INFO  Load/download plugins
+03:43:45.470 INFO  Load/download plugins (done) | time=249ms
+03:43:45.753 INFO  Process project properties
+03:43:45.766 INFO  Process project properties (done) | time=13ms
+03:43:45.782 INFO  Project key: mi-proyecto-backend-develop
+03:43:45.783 INFO  Base dir: /app/backend
+03:43:45.784 INFO  Working dir: /tmp/.scannerwork
+03:43:45.803 INFO  Load project settings for component key: 'mi-proyecto-backend-develop'03:43:45.826 INFO  Load project settings for component key: 'mi-proyecto-backend-develop' (done) | time=23ms
+03:43:45.867 INFO  Load quality profiles
+03:43:45.935 INFO  Load quality profiles (done) | time=68ms
+03:43:45.980 WARN  SCM provider autodetection failed. Please use "sonar.scm.provider" to 
+define SCM of your project, or disable the SCM Sensor in the project settings.
+03:43:45.987 INFO  Load active rules
+03:43:46.284 INFO  Load active rules (done) | time=297ms
+03:43:46.295 INFO  Load analysis cache
+03:43:46.307 INFO  Load analysis cache (404) | time=13ms
+03:43:46.426 INFO  Preprocessing files...
+03:43:56.427 INFO  Preprocessed 0 files
+03:44:06.569 INFO  Preprocessed 0 files
+03:44:12.781 INFO  6 languages detected in 7740 preprocessed files (done) | time=26354ms
+03:44:12.781 INFO  3777 files ignored because of inclusion/exclusion patterns
+03:44:12.783 INFO  Loading plugins for detected languages
+03:44:12.783 INFO  Load/download plugins
+03:44:13.342 INFO  Load/download plugins (done) | time=558ms
+03:44:13.486 INFO  Load project repositories
+03:44:13.580 INFO  Load project repositories (done) | time=94ms
+03:44:13.596 INFO  Indexing files...
+03:44:13.597 INFO  Project configuration:
+03:44:13.598 INFO    Excluded sources: **/migrations/**, **/__pycache__/**, **/venv/**   
+03:44:23.597 INFO  1956 files indexed...  (last one was .venv/Lib/site-packages/django/contrib/flatpages/locale/da/LC_MESSAGES/django.mo)
+03:44:33.740 INFO  3884 files indexed...  (last one was .venv/Lib/site-packages/django/utils/regex_helper.py)
+03:44:43.740 INFO  6559 files indexed...  (last one was .venv/Lib/site-packages/twilio/rest/studio/v1/flow/engagement/engagement_context.py)
+03:44:47.659 INFO  7637 files indexed (done) | time=34063ms
+03:44:47.660 INFO  Quality profile for css: Sonar way
+03:44:47.661 INFO  Quality profile for js: Sonar way
+03:44:47.661 INFO  Quality profile for py: Sonar way
+03:44:47.661 INFO  Quality profile for web: Sonar way
+03:44:47.661 INFO  Quality profile for xml: Sonar way
+03:44:47.662 INFO  Quality profile for yaml: Sonar way
+03:44:47.662 INFO  ------------- Run sensors on module Mi Proyecto - Backend Django (Develop)
+03:44:47.690 INFO  Load metrics repository
+03:44:47.708 INFO  Load metrics repository (done) | time=18ms
+03:44:48.288 INFO  Sensor Python Sensor [python]
+03:44:48.293 WARN  Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the exact Python version in your configuration via the parameter "sonar.python.version"
+03:44:48.629 INFO  Starting global symbols computation
+03:44:48.632 INFO  98 source files to be analyzed
+03:44:49.333 INFO  98/98 source files have been analyzed
+03:44:49.335 INFO  Finished step global symbols computation in 704ms
+03:44:49.379 INFO  Starting rules execution
+03:44:49.380 INFO  98 source files to be analyzed
+03:44:50.534 INFO  98/98 source files have been analyzed
+03:44:50.534 INFO  Finished step rules execution in 1154ms
+03:44:50.535 INFO  The Python analyzer was able to leverage cached data from previous analyses for 0 out of 98 files. These files were not parsed.
+03:44:50.536 INFO  Sensor Python Sensor [python] (done) | time=2249ms
+03:44:50.536 INFO  Sensor Cobertura Sensor for Python coverage [python]
+03:45:05.069 INFO  Sensor Cobertura Sensor for Python coverage [python] (done) | time=14533ms
+03:45:05.070 INFO  Sensor PythonXUnitSensor [python]
+03:45:19.032 INFO  Sensor PythonXUnitSensor [python] (done) | time=13962ms
+03:45:19.032 INFO  Sensor Python Dependency Sensor [python]
+03:45:19.041 INFO  Sensor Python Dependency Sensor [python] (done) | time=10ms
+03:45:19.042 INFO  Sensor HTML [web]
+03:45:19.044 INFO  Sensor HTML [web] (done) | time=3ms
+03:45:19.045 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+03:45:19.045 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+03:45:19.046 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+03:45:19.047 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+03:45:19.047 INFO  Sensor IaC Docker Sensor [iac]
+03:45:19.050 INFO  There are no files to be analyzed for the Docker language
+03:45:19.051 INFO  Sensor IaC Docker Sensor [iac] (done) | time=3ms
+03:45:19.051 INFO  Sensor IaC hadolint report Sensor [iac]
+03:45:19.051 INFO  Sensor IaC hadolint report Sensor [iac] (done) | time=1ms
+03:45:19.052 INFO  Sensor Java Config Sensor [iac]
+03:45:19.060 INFO  There are no files to be analyzed for the Java language
+03:45:19.060 INFO  Sensor Java Config Sensor [iac] (done) | time=8ms
+03:45:19.061 INFO  Sensor CSS Rules [javascript]
+03:45:19.064 INFO  No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+03:45:19.064 INFO  Sensor CSS Rules [javascript] (done) | time=4ms
+03:45:19.064 INFO  Sensor TextAndSecretsSensor [text]
+03:45:19.071 INFO  Available processors: 16
+03:45:19.072 INFO  Using 16 threads for analysis.
+03:45:19.312 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test" or "tests"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+03:45:19.327 INFO  Start fetching files for the text and secrets analysis
+03:45:19.338 INFO  Using Git CLI to retrieve untracked files
+03:45:19.341 WARN  Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
+03:45:19.344 INFO  Starting the text and secrets analysis
+03:45:19.345 INFO  98 source files to be analyzed for the text and secrets analysis      
+03:45:19.440 INFO  98/98 source files have been analyzed for the text and secrets analysis
+03:45:19.443 INFO  Sensor TextAndSecretsSensor [text] (done) | time=380ms
+03:45:19.446 INFO  ------------- Run sensors on project
+03:45:19.530 INFO  Sensor Zero Coverage Sensor
+03:45:19.547 INFO  Sensor Zero Coverage Sensor (done) | time=16ms
+03:45:19.547 INFO  ------------- Gather SCA dependencies on project
+03:45:19.549 INFO  Dependency analysis skipped
+03:45:19.550 INFO  SCM Publisher No SCM system was detected. You can use the 'sonar.scm.p03:45:19.555 INFO  CPD Executor 55 files had no CPD blocks
+03:45:19.968 INFO  Analysis report compressed in 127ms, zip size=306.4 kB
+03:45:19.996 INFO  Analysis report uploaded in 27ms
+03:45:19.997 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=mi-proyecto-backend-develop
+03:45:19.997 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+03:45:19.997 INFO  More about the report processing at http://localhost:9000/api/ce/task?id=a820cff7-b1d0-4b68-9372-d38363456907
+03:45:20.015 INFO  Analysis total time: 1:34.484 s
+03:45:20.016 INFO  SonarScanner Engine completed successfully
+03:45:20.357 INFO  EXECUTION SUCCESS
